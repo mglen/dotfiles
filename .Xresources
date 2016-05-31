@@ -1,0 +1,59 @@
+! ------------------------------------------------------------------------------
+! Xterm
+! ------------------------------------------------------------------------------
+!
+! Quickref:
+!
+! PRIMARY   : xterm clipboard., receives data by mouse-select.
+! CLIPBOARD : Xorg clipboard. Other applications Ctrl+C Ctrl+V
+!
+! Scrolling:
+!   Shift + Up/Down: Move one line
+! 
+! Copy/Paste:
+!   Mouse-Select           : Copy to PRIMARY
+!   Shift + Mouse-Select   : Copy to CLIPBOARD
+!   
+!   Middle-Click           : Paste from PRIMARY
+!   Shift + Middle-Click   : Paste from CLIPBOARD
+!
+!   Ctrl + Shift + V       : Paste from CLIPBOARD
+!   Ctrl + Alt + Shift + V : Paste from PRIMARY
+!
+
+! 70% white
+XTerm*foreground: rgb:b2/b2/b2
+
+! 93% black
+XTerm*background: rgb:18/18/18
+
+! Font: https://github.com/chrissimpkins/Hack
+XTerm*faceName: Hack:size=10
+XTerm*allowBoldFonts: false
+
+! Slight increase to line spacing
+XTerm*scaleHeight: 1.01
+
+! set TERM, so bash knows terminal supports color
+XTerm*termName: xterm-256color
+
+! Custom hotkeys. See Quickref
+*VT100.Translations: #override \
+                    Shift <Key>Up:              scroll-back(1) \n\
+                    Shift <Key>Down:            scroll-forw(1) \n\
+                    ~Meta Shift Ctrl <Key>V:    insert-selection(CLIPBOARD) \n\
+                     Meta Shift Ctrl <Key>V:    insert-selection(PRIMARY) \n\
+                    ~Shift <Btn1Up>:            select-end(PRIMARY, CUT_BUFFER0) \n\
+                     Shift <Btn1Up>:            select-end(CLIPBOARD, CUT_BUFFER1) \n\
+                    ~Shift ~Ctrl ~Meta <Btn2Up>:insert-selection(PRIMARY, CUT_BUFFER0) \n\
+                     Shift ~Ctrl ~Meta <Btn2Up>:insert-selection(CLIPBOARD, CUT_BUFFER1)
+
+! ------------------------------------------------------------------------------
+! ROFI
+! ------------------------------------------------------------------------------
+! Color theme name: android_notification
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844

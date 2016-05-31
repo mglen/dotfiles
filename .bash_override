@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+export EDITOR='vim'
+export PATH=$HOME/bin:$PATH
+
+#Accesing gpg from ssh
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# Always treat history like this
+HISTCONTROL=ignoreboth
+HISTSIZE=50000
+HISTFILESIZE=500000
+

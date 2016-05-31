@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+DESIRED_COMMANDS=(git htop mtr vim w3m curl wget unzip make dig nmap sshpass jq nc)
+DESIRED_CODING_COMMANDS=(python pip virtualenv perl cpanm )
+DESIRED_WORK_COMMANDS=(mysql psql redis-cli ftp tcpdump snmpget)
+DESIRED_WORKSTATION_COMMANDS=(subl i3 rofi feh pass task)
+DESIRED_FONTS=(Hack FontAwesome)
+
+echo "> Checking desired commands"
+for c in ${DESIRED_COMMANDS[@]}; do
+	command -v $c > /dev/null 2>&1 || echo >&2 "Command: '$c' missing"
+done
+
+echo
+echo "> Checking desired coding commands"
+for c in ${DESIRED_CODING_COMMANDS[@]}; do
+	command -v $c > /dev/null 2>&1 || echo >&2 "Command: '$c' missing"
+done
+
+echo
+echo "> Checking desired work commands"
+for c in ${DESIRED_WORK_COMMANDS[@]}; do
+	command -v $c > /dev/null 2>&1 || echo >&2 "Command: '$c' missing"
+done
+
+echo
+echo "> Checking desired workstation commands"
+for c in ${DESIRED_WORKSTATION_COMMANDS[@]}; do
+	command -v $c > /dev/null 2>&1 || echo >&2 "Command: '$c' missing"
+done
+
+echo
+echo "> Checking fonts"
+FONTS=$(fc-list)
+for f in ${DESIRED_FONTS[@]}; do
+	echo "$FONTS" | grep $f > /dev/null || echo >&2 "Font: '$c' missing"
+done
+echo
