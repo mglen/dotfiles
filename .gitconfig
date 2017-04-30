@@ -4,3 +4,11 @@
   editor = vim
 [log]
   decorate = short
+[push]
+  default = current
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+[alias]
+  co = checkout
+  ci = commit
