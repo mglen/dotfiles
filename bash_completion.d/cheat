@@ -1,0 +1,10 @@
+_cheat() {
+  local cur opts
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  opts=$(ls -1 ~/cheat_* | xargs -l1 basename | cut -d_ -f2)
+
+  COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+  return 0
+}
+complete -F _cheat cheat
